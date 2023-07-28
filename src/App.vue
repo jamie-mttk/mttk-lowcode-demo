@@ -4,9 +4,12 @@ import {  RouterView } from 'vue-router'
 import { ref,  provide } from 'vue'
 import { app,router } from './main'
 import { createGlobalContext, createAppContext } from 'mttk-lowcode'
+import {useComponentRepository} from 'mttk-lowcode'
 //2. Create global context
 const globalContext = createGlobalContext(import.meta.env.VITE_APP_API_BASE, app,router)
 provide('globalContext', globalContext)
+//
+useComponentRepository().resetPageWidget(globalContext)
 //3.Create application context
 const appContext = createAppContext(globalContext);
 provide('appContext', appContext)
